@@ -1,0 +1,21 @@
+name: deployment1 - lint, test, push
+on: push
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: action/checkout@v4
+      - name: Clean install dependancies 
+        run: npm ci
+      - name: Run lint
+        run: npm run lint
+      - name: Run test script
+        run: npm run test
+      - name: Run build script
+        run: npm run build
+      - name: Deploy the code
+        run: echo "Hey ready to deploy the code now"
+
+
+

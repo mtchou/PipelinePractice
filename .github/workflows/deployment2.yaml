@@ -1,0 +1,36 @@
+name: deployement 2 with multiple jobs
+on: push
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Download codes
+        uses: action/checkout@v4
+      - name: Clean install dependency
+        run: npm ci
+      - name: Run lint
+        run: |
+          npm run lint
+          echo 'Lint is done'
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download code
+        uses: action/checkout@v4
+      - name: Clean install dependencies
+        run: npm ci
+      - name: Run Tests
+        run: |
+          npm run test
+          echo 'Tests are done'
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download code
+        uses: action/checkout@v4
+      - name: Clean install dependencies
+        run: npm ci
+      - name: Build codes
+        run: |
+          npm run build
+          echo "Build is done"
