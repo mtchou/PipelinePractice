@@ -13,6 +13,7 @@ jobs:
           npm run lint
           echo 'Lint is done'
   test:
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - name: Download code
@@ -24,6 +25,7 @@ jobs:
           npm run test
           echo 'Tests are done'
   Deploy:
+    needs: [lint, test]
     runs-on: ubuntu-latest
     steps:
       - name: Download code

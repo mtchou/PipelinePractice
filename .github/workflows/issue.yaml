@@ -1,0 +1,9 @@
+name: Show issue details
+on: 
+  issues
+jobs:
+  showDetails:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output Github context
+        run: echo "${{toJson(github)}}"
