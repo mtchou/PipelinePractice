@@ -1,11 +1,11 @@
-name: deployment1 - lint, test, push
+name: deployment1 - lint, test, build - in one job
 on: push
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Get code
-        uses: action/checkout@v4
+        uses: actions/checkout@v4
       - name: Clean install dependancies 
         run: npm ci
       - name: Run lint
